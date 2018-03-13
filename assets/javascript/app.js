@@ -44,14 +44,30 @@ $(document).ready(function() {
                 var giphyArray = response.data;
                 for (i = 0; i < giphyArray.length; i++) {
                     var thumbnail = $("<span>");
-                    var thumbnailImg = $("<img>").addClass("img-thumbnail");
-                    thumbnailImg.attr("src", giphyArray[i].images.fixed_height_still.url);
+                    var thumbnailImg = $("<img>").addClass("img-thumbnail imgGif");
+                    thumbnailImg.attr("data-still", giphyArray[i].images.fixed_height_still.url);
+                    thumbnailImg.attr("data-animate", giphyArray[i].images.fixed_height.url);
+                    thumbnailImg.attr("data-state", "still");
+                    thumbnailImg.attr("src", thumbnailImg.attr("data-still"));
                     var thumbnailCap = $("<em>Rating: " + giphyArray[i].rating + "</em>");
-                    thumbnailImg.append(thumbnailCap);
                     thumbnail.html(thumbnailImg);
+                    thumbnail.prepend(thumbnailCap);
                     $("#gifDisplay").append(thumbnail);
                 }
             });
+        },
+
+        // Change static gif to animated and vice versa
+        changeGif: function() {
+            var state = $(this).attr("data-state");
+            if (state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+            }
+            else if (state === "animate") {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            }
         }
     };
 
@@ -64,4 +80,7 @@ $(document).ready(function() {
 
     // Gif button to display gifs
     $(document).on("click", ".btnGif", gif.displayGifs);
+
+    // Gif click to swap static and animated
+    $(document).on("click", ".imgGif", gif.changeGif);
 });
