@@ -5,3 +5,7 @@
 img {
     margin: 5px;
 }
+
+.inlineDiv {
+    display: inline !important;
+}
