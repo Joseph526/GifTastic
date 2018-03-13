@@ -7,5 +7,5 @@ img {
 }
 
 .inlineDiv {
-    display: inline !important;
+    display: inline-block !important;
 }

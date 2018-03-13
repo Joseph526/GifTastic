@@ -49,11 +49,11 @@ $(document).ready(function() {
                     thumbnailImg.attr("data-animate", giphyArray[i].images.fixed_height.url);
                     thumbnailImg.attr("data-state", "still");
                     thumbnailImg.attr("src", thumbnailImg.attr("data-still"));
-                    var thumbnailCap = $("<em>");
+                    var thumbnailCap = $("<p>");
                     thumbnailCap.html("Rating: " + giphyArray[i].rating);
                     thumbnail.html(thumbnailImg);
                     thumbnail.append(thumbnailCap);
-                    $("#gifDisplay").append(thumbnail);
+                    $("#gifDisplay").prepend(thumbnail);
                 }
             });
         },
