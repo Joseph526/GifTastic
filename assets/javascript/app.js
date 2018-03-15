@@ -50,7 +50,7 @@ $(document).ready(function() {
                     thumbnailImg.attr("data-state", "still");
                     thumbnailImg.attr("src", thumbnailImg.attr("data-still"));
                     var thumbnailCap = $("<div>").addClass("caption");
-                    thumbnailCap.html("<p>Rating: " + giphyArray[i].rating + "</p>");
+                    thumbnailCap.html("<p>Rating: " + giphyArray[i].rating + "</p><p>Title: " + giphyArray[i].title + "</p>");
                     thumbnail.html(thumbnailImg);
                     thumbnail.append(thumbnailCap);
                     $("#gifDisplay").prepend(thumbnail);
