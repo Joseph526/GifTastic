@@ -43,14 +43,14 @@ $(document).ready(function() {
                 console.log(response);
                 var giphyArray = response.data;
                 for (i = 0; i < giphyArray.length; i++) {
-                    var thumbnail = $("<div>").addClass("inlineDiv");
+                    var thumbnail = $("<div>").addClass("thumbnail inlineDiv");
                     var thumbnailImg = $("<img>").addClass("imgGif");
                     thumbnailImg.attr("data-still", giphyArray[i].images.fixed_height_still.url);
                     thumbnailImg.attr("data-animate", giphyArray[i].images.fixed_height.url);
                     thumbnailImg.attr("data-state", "still");
                     thumbnailImg.attr("src", thumbnailImg.attr("data-still"));
-                    var thumbnailCap = $("<p>");
-                    thumbnailCap.html("Rating: " + giphyArray[i].rating);
+                    var thumbnailCap = $("<div>").addClass("caption");
+                    thumbnailCap.html("<p>Rating: " + giphyArray[i].rating + "</p>");
                     thumbnail.html(thumbnailImg);
                     thumbnail.append(thumbnailCap);
                     $("#gifDisplay").prepend(thumbnail);
